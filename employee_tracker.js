@@ -1,3 +1,4 @@
+const {prompt} = require("inquirer");
 const mysql = require("mysql");
 
 const DB_name = "DB_NAME";
@@ -8,6 +9,47 @@ user: "root",
 password: "password",
 database: DB_name,
 });
+
+function addMockData(){
+	var sql = "insert into department (name) values ?"
+	var values = [["Sales"], ["Legal"], ["Engineering"], ["Finance"]];
+	con.query (sql, [values], function(error, result) {
+		if (error) throw error;
+		else console.log("rows affected " + result.affectedRows)
+	})
+
+	sql = "insert into role (title, salary, department_id) values ?"
+	var values = [
+		["Software Engineer", 120000.00, 3], 
+		["Engineer Manager", 240000.00, 3], 
+		["Sales Representative", 80000.00, 1], 
+		["Sales Manager", 120000.00, 1], 
+		["Attorney", 100000.00, 2], 
+		["Case Manager", 100000.00, 2], 
+		["Financial Advisor", 100000.00, 4],
+		["Portfolio Manager", 150000.00, 4],
+	]
+	con.query (sql, [values], function(error, result) {
+		if (error) throw error;
+		else console.log("rows affected " + result.affectedRows)
+	})
+}
+
+function viewAllDepartments(){
+	const sql = "SELECT * FROM department;"
+	con.query(sql, function(error, result) {
+		if(error) throw error;
+		else console.table(result)
+	})
+}
+
+function viewAllRoles() {
+	const sql = "SELECT * FROM role ORDER by department_id;"
+	con.query(sql, function(error, result){
+		if(error) throw error;
+		else console.table(result)
+	})
+}
 
 const initialiazeTables = () => {
 var sql_querries = `DROP TABLE IF EXISTS employee;
@@ -27,5 +69,11 @@ for (let sql of sql_querries.split("\n")) {
 
 con.connect(function (err) {
 if (err) throw err;
-else initialiazeTables();
+initialiazeTables();
+
+addMockData(); 
+
+viewAllDepartments();
+
+viewAllRoles();
 });
