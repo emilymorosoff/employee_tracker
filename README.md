@@ -18,7 +18,20 @@ Ensure you have Node.js, npm, and MySQL installed on your system before proceedi
    ```bash
    git clone https://github.com/emilymorosoff/employee_tracker.git
    cd employee_tracker
+   ```
 
+2. **Install Dependencies**
+   ```bash
+   npm i
+   ```
+
+3. **Create .env File**
+ ```
+ DATABASE_NAME=DB_name
+PASSWORD=password 
+```
+
+4. **Run `node employee_tracker.js`**
 
 ## Mock-Up
 
