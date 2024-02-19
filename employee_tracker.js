@@ -1,12 +1,14 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
-
-const DB_name = "empdb";
+const dotenv = require("dotenv")
+dotenv.config()
+const DB_name = process.env.DATABASE_NAME;
+console.log(DB_name)
 
 const con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "1205",
+	password: process.env.PASSWORD,
 	database: DB_name,
 });
 
