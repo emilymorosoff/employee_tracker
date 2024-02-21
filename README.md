@@ -37,4 +37,4 @@ PASSWORD=password
 
 The following video shows an example of the application being used from the command line:
 
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](https://youtu.be/3dzYiBIvzP4)](https://2u-20.wistia.com/medias/2lnle7xnpk)
+[![A diagram thumbnail shows the database schema for the employee tracker application.](Assets/12-sql-homework-demo-01.png)](https://youtu.be/3dzYiBIvzP4)
